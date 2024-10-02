@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App-TailWind.css";
+import { ToggleSwitch } from "./ui/ToggleSwitch/ToggleSwitch";
+import { useState } from "react";
+import { toggleDarkMode } from "./lib/globals";
 
 function App() {
+  const [darkMode, setDarkMode] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={
+        toggleDarkMode(darkMode) + "dark:text-indigo-700 dark:bg-black big"
+      }
+    >
+      <p>hello world</p>
+      <ToggleSwitch label="Modo oscuro" setValue={setDarkMode} />
     </div>
   );
 }
