@@ -1,11 +1,12 @@
 import logo from "./logo.svg";
 import "./App-TailWind.css";
 import { ToggleSwitch } from "./ui/ToggleSwitch/ToggleSwitch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toggleDarkMode } from "./lib/globals";
 
 function App() {
   const [darkMode, setDarkMode] = useState("");
+
   return (
     <div
       className={
