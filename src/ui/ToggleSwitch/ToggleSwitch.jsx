@@ -11,6 +11,7 @@ export const ToggleSwitch = (props) => {
       <span className="menuItem">{label}&emsp;</span>
       <label className="text-indigo-700 switch">
         <input
+          className="menuItem"
           type="checkbox"
           onChange={(e) => {
             if (setValue) {
@@ -18,7 +19,7 @@ export const ToggleSwitch = (props) => {
             }
           }}
         />
-        <span className="slider round"></span>
+        <span className="menuItem slider round"></span>
       </label>
     </div>
   );
