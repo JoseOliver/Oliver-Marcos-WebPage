@@ -10,6 +10,21 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
 
+  // useEffect(() => {
+  window.addEventListener("click", (event) => {
+    if (
+      event.target.id !== "menuOpener" &&
+      event.target.id !== "menuOpenerButton" &&
+      event.target.id !== "menu" &&
+      event.target.className !== "menuItem" &&
+      typeof event.target.parentNode.className == "string" &&
+      event.target.parentNode.className.split(" ")[0] !== "menuItem" // esto comprueba si la primera clase del padre es menuItem
+    ) {
+      setMenuVisible(false);
+    }
+  });
+  // }, []);
+
   return (
     <div // body
       className={
@@ -17,28 +32,30 @@ function App() {
         " dark:text-indigo-400 dark:bg-black big block"
       }
     >
-      <header className="flex justify-between items-center">
+      <header className="border flex justify-between items-center">
         <img
           src="./assets/brand_logo.png"
           width="150"
           alt=""
           className="rounded m-1"
         />
-        <h1>Oliver Marcos Company</h1>
+        <h1>Oliver Marcos</h1>
         <button
-          className="rounded"
+          id="menuOpenerButton"
+          className="rounded w-20 h-20 flex justify-center items-center"
           onClick={() => setMenuVisible(toggle(menuVisible))}
         >
-          <MenuIcon className="m-5" />
+          <MenuIcon id="menuOpener" />
         </button>
       </header>
       <menu
+        id="menu"
         className={
           renderMenuVisible(menuVisible) +
-          "absolute menu w-80 dark:bg-white bg-gray-200 flex justify-between flex-col"
+          "menu absolute w-80 dark:bg-white bg-gray-200 flex justify-between flex-col"
         }
       >
-        <div>
+        <div className="menuItem">
           <h2>&nbsp;Lista del menu&nbsp;</h2>
           <p>a</p>
           <p>b</p>

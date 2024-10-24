@@ -8,7 +8,7 @@ export const ToggleSwitch = (props) => {
   let setValue = props.setValue || false;
   return (
     <>
-      <div className={"flex items-center " + additionalClasses}>
+      <div className={"menuItem flex items-center " + additionalClasses}>
         <span>{label}&emsp;</span>
         <label className="text-indigo-700 switch">
           <input

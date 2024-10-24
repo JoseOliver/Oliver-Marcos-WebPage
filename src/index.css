@@ -18,18 +18,24 @@ code {
 
 h1 {
   font-size: 3em !important;
-  font-family: "garamond", serif;
+  font-family: "Brush Script MT";
+  font-variant: small-caps;
   font-weight: bold !important;
 }
 h2 {
   font-size: 1.5em !important;
-  font-family: "garamond", serif;
+  font-family: "Brush Script MT";
   text-decoration: underline;
   font-weight: bold !important;
 }
 
 .border {
-  border: 2px solid black;
+  border: solid black;
+  border-width: 10px !important;
+}
+.dark .border {
+  border: solid white;
+  border-width: 10px !important;
 }
 
 .invisible {
@@ -37,7 +43,7 @@ h2 {
 }
 
 .menu {
-  height: calc(100% - 160px);
+  height: calc(100% - 180px);
   border-radius: 0 25px 25px 0;
   padding: 10px;
 }
