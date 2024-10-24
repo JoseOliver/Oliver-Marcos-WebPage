@@ -10,20 +10,18 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
 
-  // useEffect(() => {
   window.addEventListener("click", (event) => {
     if (
       event.target.id !== "menuOpener" &&
       event.target.id !== "menuOpenerButton" &&
       event.target.id !== "menu" &&
-      event.target.className !== "menuItem" &&
+      event.target.classList[0] !== "menuItem" &&
       typeof event.target.parentNode.className == "string" &&
       event.target.parentNode.className.split(" ")[0] !== "menuItem" // esto comprueba si la primera clase del padre es menuItem
     ) {
       setMenuVisible(false);
     }
   });
-  // }, []);
 
   return (
     <div // body
@@ -61,11 +59,7 @@ function App() {
           <p>b</p>
           <p>c</p>
         </div>
-        <ToggleSwitch
-          label="Modo oscuro"
-          setValue={setDarkMode}
-          className="pt-20"
-        />
+        <ToggleSwitch label="Modo oscuro" setValue={setDarkMode} />
       </menu>
       <p>hello world</p>
     </div>

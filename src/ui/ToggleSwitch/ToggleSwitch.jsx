@@ -7,21 +7,19 @@ export const ToggleSwitch = (props) => {
   let additionalClasses = props.className;
   let setValue = props.setValue || false;
   return (
-    <>
-      <div className={"menuItem flex items-center " + additionalClasses}>
-        <span>{label}&emsp;</span>
-        <label className="text-indigo-700 switch">
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              if (setValue) {
-                setValue(e.target.checked);
-              }
-            }}
-          />
-          <span className="slider round"></span>
-        </label>
-      </div>
-    </>
+    <div className={"menuItem flex items-center " + additionalClasses}>
+      <span className="menuItem">{label}&emsp;</span>
+      <label className="text-indigo-700 switch">
+        <input
+          type="checkbox"
+          onChange={(e) => {
+            if (setValue) {
+              setValue(e.target.checked);
+            }
+          }}
+        />
+        <span className="slider round"></span>
+      </label>
+    </div>
   );
 };
