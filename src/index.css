@@ -15,3 +15,29 @@ code {
 .big {
   min-height: 100vh;
 }
+
+h1 {
+  font-size: 3em !important;
+  font-family: "garamond", serif;
+  font-weight: bold !important;
+}
+h2 {
+  font-size: 1.5em !important;
+  font-family: "garamond", serif;
+  text-decoration: underline;
+  font-weight: bold !important;
+}
+
+.border {
+  border: 2px solid black;
+}
+
+.invisible {
+  display: none;
+}
+
+.menu {
+  height: calc(100% - 160px);
+  border-radius: 0 25px 25px 0;
+  padding: 10px;
+}
