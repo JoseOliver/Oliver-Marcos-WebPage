@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.big {
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3em !important;
+  font-family: "Brush Script MT";
+  font-variant: small-caps;
+  font-weight: bold !important;
+}
+h2 {
+  font-size: 1.5em !important;
+  font-family: "Brush Script MT";
+  text-decoration: underline;
+  font-weight: bold !important;
+}
+
+.border {
+  border: solid black;
+  border-width: 10px !important;
+}
+.dark .border {
+  border: solid white;
+  border-width: 10px !important;
+}
+
+.invisible {
+  display: none;
+}
+
+.menu {
+  height: calc(100% - 180px);
+  border-radius: 0 25px 25px 0;
+  padding: 10px;
+}
