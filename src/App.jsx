@@ -1,34 +1,35 @@
 // import logo from "./logo.svg";
 import "./App-TailWind.css";
 import MenuIcon from "@mui/icons-material/Menu";
-
-import { ToggleSwitch } from "./ui/ToggleSwitch/ToggleSwitch";
-import { useState } from "react";
-import { renderDarkMode, renderMenuVisible, toggle } from "./lib/globals";
+import { useState, useEffect, useRef } from "react";
+import Menu from "./ui/Menu/Menu";
+import { releaseMenu, showMenu } from "./lib/animations";
+import { useSpring } from "@react-spring/web";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [menuVisible, setMenuVisible] = useState(false);
-
-  window.addEventListener("click", (event) => {
-    if (
-      event.target.id !== "menuOpener" &&
-      event.target.id !== "menuOpenerButton" &&
-      event.target.id !== "menu" &&
-      event.target.classList[0] !== "menuItem" &&
-      typeof event.target.parentNode.className == "string" &&
-      event.target.parentNode.className.split(" ")[0] !== "menuItem" // esto comprueba si la primera clase del padre es menuItem
-    ) {
-      setMenuVisible(false);
-    }
-  });
+  // elements refs
+  const bodyRef = useRef(null);
+  const menuRef = useRef(null);
+  // variables
+  // hooks
+  const [darkMode, setDarkMode] = useState(false); // dark mode bool
+  const [menuVisible, setMenuVisible] = useState(false); // dark mode bool
+  const [menuSprings, menuApi] = useSpring(() => ({
+    // menu animator
+    from: { x: -300 },
+  }));
+  // effects
+  useEffect(() => {
+    // dark mode enabler
+    let body = bodyRef.current;
+    if (darkMode) body.classList.add("dark");
+    else body.classList.remove("dark");
+  }, [darkMode]);
 
   return (
     <div // body
-      className={
-        renderDarkMode(darkMode) +
-        " dark:text-indigo-400 dark:bg-black big block"
-      }
+      ref={bodyRef}
+      className="dark:text-indigo-400 dark:bg-black big block"
     >
       <header className="border flex justify-between items-center">
         <img
@@ -41,26 +42,27 @@ function App() {
         <button
           id="menuOpenerButton"
           className="rounded w-20 h-20 flex justify-center items-center"
-          onClick={() => setMenuVisible(toggle(menuVisible))}
+          onClick={() => {
+            if (!menuVisible) {
+              showMenu(menuApi);
+              setMenuVisible(true);
+            } else {
+              releaseMenu(menuApi);
+              setMenuVisible(false);
+            }
+          }}
         >
           <MenuIcon id="menuOpener" />
         </button>
       </header>
-      <menu
-        id="menu"
-        className={
-          renderMenuVisible(menuVisible) +
-          "menu absolute w-80 dark:bg-white bg-gray-200 flex justify-between flex-col"
-        }
-      >
-        <div className="menuItem">
-          <h2>&nbsp;Lista del menu&nbsp;</h2>
-          <p>a</p>
-          <p>b</p>
-          <p>c</p>
-        </div>
-        <ToggleSwitch label="Modo oscuro" setValue={setDarkMode} />
-      </menu>
+      <Menu
+        ref={menuRef}
+        menuSprings={menuSprings}
+        menuApi={menuApi}
+        menuVisible={menuVisible}
+        setMenuVisible={setMenuVisible}
+        setDarkMode={setDarkMode}
+      />
       <p>hello world</p>
     </div>
   );
