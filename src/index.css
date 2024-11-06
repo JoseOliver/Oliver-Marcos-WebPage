@@ -31,11 +31,18 @@ h2 {
   border: solid black;
   border-width: 10px !important;
 }
+.fine-border {
+  border: solid black;
+  border-width: 2px !important;
+}
 .dark .border {
-  border: solid white;
+  border: solid #e2e8f0;
   border-width: 10px !important;
 }
-
+.dark .fine-border {
+  border: solid #e2e8f0;
+  border-width: 2px !important;
+}
 .invisible {
   visibility: hidden;
 }

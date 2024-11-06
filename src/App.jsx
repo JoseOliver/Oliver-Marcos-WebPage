@@ -29,14 +29,14 @@ function App() {
   return (
     <div // body
       ref={bodyRef}
-      className="dark:text-indigo-400 dark:bg-black big block"
+      className="dark:text-indigo-400 dark:bg-slate-800 big block"
     >
-      <header className="border flex justify-between items-center">
+      <header className="border flex justify-between items-center bg-slate-200 dark:bg-black">
         <img
           src="./src/assets/brand_logo.png"
           width="150"
           alt=""
-          className="rounded m-1"
+          className="rounded m-1 fine-border"
         />
         <h1>Oliver Marcos</h1>
         <button
