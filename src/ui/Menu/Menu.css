@@ -1,0 +1,6 @@
+.menu {
+  width: 300px;
+  height: calc(100% - 180px);
+  border-radius: 0 25px 25px 0;
+  padding: 10px;
+}

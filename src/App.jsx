@@ -13,7 +13,7 @@ function App() {
   // variables
   // hooks
   const [darkMode, setDarkMode] = useState(false); // dark mode bool
-  const [menuVisible, setMenuVisible] = useState(false); // dark mode bool
+  const [menuVisible, setMenuVisible] = useState(false); // menu visibility bool
   const [menuSprings, menuApi] = useSpring(() => ({
     // menu animator
     from: { x: -300 },

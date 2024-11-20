@@ -3,6 +3,7 @@ import { animated } from "@react-spring/web";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import { handleMenuDrag, releaseMenu, showMenu } from "../../lib/animations";
 import { addEventsToMenu } from "./MenuEvents";
+import "./menu.css";
 
 const Menu = React.forwardRef((props, menuRef) => {
   // menu props
