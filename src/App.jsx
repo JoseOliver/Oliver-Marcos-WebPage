@@ -1,8 +1,11 @@
 // import logo from "./logo.svg";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./App-TailWind.css";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useState, useEffect, useRef } from "react";
 import Menu from "./ui/Menu/Menu";
+import Index from "./ui/Index/Index";
+import MenuIcon from "@mui/icons-material/Menu";
 import { releaseMenu, showMenu } from "./lib/animations";
 import { useSpring } from "@react-spring/web";
 
@@ -29,7 +32,7 @@ function App() {
   return (
     <div // body
       ref={bodyRef}
-      className="dark:text-indigo-400 dark:bg-slate-800 big block"
+      className="dark:text-indigo-300 dark:bg-slate-800 big block"
     >
       <header className="border flex justify-between items-center bg-slate-200 dark:bg-black">
         <img
@@ -63,7 +66,8 @@ function App() {
         setMenuVisible={setMenuVisible}
         setDarkMode={setDarkMode}
       />
-      <p>hello world</p>
+
+      <Outlet />
     </div>
   );
 }

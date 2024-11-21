@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { animated } from "@react-spring/web";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import { handleMenuDrag, releaseMenu, showMenu } from "../../lib/animations";
@@ -25,14 +26,20 @@ const Menu = React.forwardRef((props, menuRef) => {
     <animated.div
       id="menu"
       ref={menuRef}
-      className="menu absolute dark:bg-slate-200 bg-slate-200 flex justify-between flex-col items-center"
+      className="menu absolute dark:bg-slate-600 bg-slate-200 flex justify-between flex-col items-center"
       style={menuSprings}
     >
-      <div className="menuItem text-black">
+      <div className="menuItem">
         <h2>&nbsp;Lista del menu&nbsp;</h2>
-        <p>a</p>
-        <p>b</p>
-        <p>c</p>
+        <Link to="/">
+          <p>Home</p>
+        </Link>
+        <Link to="/products">
+          <p>Productos</p>
+        </Link>
+        <Link to="/about">
+          <p>Acerca de</p>
+        </Link>
       </div>
       <ToggleSwitch label="Modo oscuro" setValue={setDarkMode} />
     </animated.div>
