@@ -1,5 +1,5 @@
 {
-  "name": "oliver_marcos_front",
+  "name": "Oliver-Marcos-WebPage",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev_DB_up": ""
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -17,11 +18,13 @@
     "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.6",
     "@react-spring/web": "^9.7.5",
+    "mysql2": "^3.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@types/node": "^22.10.6",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",

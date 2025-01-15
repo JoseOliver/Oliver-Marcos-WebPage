@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "description": "server API, developed with TypeORM.",
+  "type": "commonjs",
+  "devDependencies": {
+    "ts-node": "10.9.1",
+    "@types/node": "^16.11.10",
+    "typescript": "4.5.2"
+  },
+  "dependencies": {
+    "typeorm": "0.3.20",
+    "reflect-metadata": "^0.1.13",
+    "mysql": "^2.14.1"
+  },
+  "scripts": {
+    "start": "",
+    "start-dev": "ts-node index.ts -env dev",
+    "up-dev": "ts-node dev/create/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
+  }
+}

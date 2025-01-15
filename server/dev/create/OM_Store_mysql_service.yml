@@ -1,0 +1,14 @@
+# docker compose -f ".\server\dev\create\create_sql_db_docker.yml" up -d
+services:
+  MySQL-DB-Server:
+    image:
+      mysql:8.0
+      # command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ejemplo
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
