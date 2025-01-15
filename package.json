@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "concurrently \"vite\" \"npx tailwindcss -i ./src/App.css -o ./src/App-TailWind.css --watch\"",
-    "dev": "vite",
+    "dev": "",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
