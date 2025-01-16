@@ -27,15 +27,21 @@ export function addEventsToMenu(props) {
   };
   const onUp = (evt) => {
     let X;
+    let openLimit = 150,
+      smallOpenLimit = 80;
     if (evt.type == "mouseup") X = evt.clientX;
     else if (evt.type == "touchend") X = evt.changedTouches[0].clientX;
     tapUp = X;
     let distance = tapUp - tapDown;
-    if (tracking && distance >= 150) {
+    if (tracking && distance >= (!smallMode ? openLimit : smallOpenLimit)) {
       showMenu(menuApi);
       setMenuVisible(true);
     }
-    if (distance > 0 && distance < 150 && tracking) {
+    if (
+      distance > 0 &&
+      distance < (!smallMode ? openLimit : smallOpenLimit) &&
+      tracking
+    ) {
       releaseMenu(menuApi, smallMode);
       setMenuVisible(false);
     }

@@ -40,13 +40,13 @@ const Menu = React.forwardRef((props, menuRef) => {
       <div className="menuItem">
         <h2>&nbsp;Lista del menu&nbsp;</h2>
         <Link to="/">
-          <p>Home</p>
+          <p className="menu-elem">Home</p>
         </Link>
         <Link to="/products">
-          <p>Productos</p>
+          <p className="menu-elem">Productos</p>
         </Link>
         <Link to="/about">
-          <p>Acerca de</p>
+          <p className="menu-elem">Acerca de</p>
         </Link>
       </div>
       <ToggleSwitch label="Modo oscuro" setValue={setDarkMode} />

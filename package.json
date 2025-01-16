@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"vite\" \"npx tailwindcss -i ./src/App.css -o ./src/App-TailWind.css --watch\"",
+    "start": "concurrently \"vite --host\" \"npx tailwindcss -i ./src/App.css -o ./src/App-TailWind.css --watch\"",
     "dev": "",
     "build": "vite build",
     "lint": "eslint .",

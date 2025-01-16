@@ -11,6 +11,8 @@ import { useSpring } from "@react-spring/web";
 import { evaluateScreenWidthOver, propagateClass } from "./lib/globals";
 
 function App() {
+  // arbitrary executions
+  window.history.pushState("", "", "/"); // disable navigation in this site
   // elements refs
   const bodyRef = useRef(null);
   const menuRef = useRef(null);
