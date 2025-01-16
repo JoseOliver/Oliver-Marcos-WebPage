@@ -1,17 +1,34 @@
 import { releaseMenu } from "./animations";
 
 export function Variables() {}
-
+// toggle any boolean
 export function toggle(state) {
   return !state;
 }
-
+// expand a class to all childs
+export function propagateClass(myElement, myClass, toDo) {
+  let children = myElement.children;
+  for (let child = 0; child < children.length; child++) {
+    if (toDo) children[child].classList.add(myClass);
+    else children[child].classList.remove(myClass);
+    if (children[child].hasChildNodes)
+      propagateClass(children[child], myClass, toDo);
+  }
+}
+// Evaluates if the screen width is upper a size or not
+export function evaluateScreenWidthOver(size) {
+  let screenSize = window.innerWidth;
+  if (size <= screenSize) return false;
+  else return true;
+}
+// Render the menu visibility boolean to a "hidden" string for the css prop
 export function renderMenuVisible(isMenuVisible) {
   if (!isMenuVisible) return "hidden ";
   else return "";
 }
+// close the menu if you click anywhere else the menu itself
 export function closeMenuOnClick(target, setMenuVisible, menuApi) {
-  // voy a ver si se ha pulsado desde fuera del menu para cerrarlo...
+  // miro si se ha pulsado desde fuera del menu para cerrarlo...
   let pointedElement = target;
   let isFather = false; // premisa no es menu
   if (pointedElement.classList.contains("menu")) {
@@ -27,8 +44,15 @@ export function closeMenuOnClick(target, setMenuVisible, menuApi) {
     }
   }
   if (!isFather) {
-    // cierra el menu si el pulsado no es o no tiene como ancestro a menu
+    // cierra el menu si el elemento pulsado no es o no tiene como ancestro a menu
     releaseMenu(menuApi);
     setMenuVisible(false);
   }
+}
+// func to add a handler to multiple listeners
+export function addMultipleListeners(element, events, handler, useCapture) {
+  const addEvent = (one) => {
+    element.addEventListener(one, (evt) => handler(evt), useCapture);
+  };
+  events.forEach(addEvent);
 }

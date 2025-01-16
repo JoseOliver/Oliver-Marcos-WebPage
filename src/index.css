@@ -14,11 +14,20 @@ code {
   min-height: 100vh;
 }
 
+img.small {
+  width: 50px;
+}
+
 h1 {
   font-size: 3em !important;
   font-family: "Brush Script MT";
   font-variant: small-caps;
   font-weight: bold !important;
+  padding: 10px;
+}
+h1.small {
+  font-size: 2em !important;
+  text-align: center;
 }
 h2 {
   font-size: 1.5em !important;
@@ -26,7 +35,6 @@ h2 {
   text-decoration: underline;
   font-weight: bold !important;
 }
-
 .border {
   border: solid black;
   border-width: 10px !important;
@@ -45,4 +53,8 @@ h2 {
 }
 .invisible {
   visibility: hidden;
+}
+#menuOpenerButton.small {
+  width: 50px;
+  height: 50px;
 }

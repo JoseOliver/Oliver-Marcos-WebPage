@@ -15,13 +15,21 @@ const Menu = React.forwardRef((props, menuRef) => {
     setMenuVisible,
     darkMode,
     setDarkMode,
+    smallMode,
   } = props;
   // menu vars
   let tapDown = false,
     tapUp = false;
   let tracking = false;
   // menu external funcs execute
-  addEventsToMenu(tapUp, tapDown, tracking, menuApi, setMenuVisible);
+  addEventsToMenu({
+    tapUp,
+    tapDown,
+    tracking,
+    menuApi,
+    setMenuVisible,
+    smallMode,
+  });
   return (
     <animated.div
       id="menu"

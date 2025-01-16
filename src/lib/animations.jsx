@@ -1,11 +1,14 @@
 import { Opacity } from "@mui/icons-material";
 import { useSpring, animated } from "@react-spring/web";
 
-export function handleMenuDrag(distance, api) {
-  if (distance < 300) {
+let size = 300,
+  smallSize = 200;
+
+export function handleMenuDrag(distance, api, smallMode) {
+  if (distance < (!smallMode ? size : smallSize)) {
     api.start({
       to: {
-        x: -300 + distance,
+        x: (!smallMode ? -size : -smallSize) + distance,
         opacity: 1,
       },
     });
@@ -26,10 +29,10 @@ export function showMenu(api) {
     },
   });
 }
-export function releaseMenu(api) {
+export function releaseMenu(api, smallMode) {
   api.start({
     to: {
-      x: -300,
+      x: !smallMode ? -size : -smallSize,
       opacity: 0,
     },
   });

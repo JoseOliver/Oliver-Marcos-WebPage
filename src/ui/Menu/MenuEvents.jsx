@@ -1,32 +1,19 @@
 import { handleMenuDrag, showMenu, releaseMenu } from "../../lib/animations";
 import { closeMenuOnClick } from "../../lib/globals";
+import { addMultipleListeners } from "../../lib/globals";
 
-export function addEventsToMenu(
-  tapUp,
-  tapDown,
-  tracking,
-  menuApi,
-  setMenuVisible
-) {
-  // func to add a handler to multiple listeners
-  const addMultipleListeners = (element, events, handler, useCapture) => {
-    const addEvent = (one) => {
-      element.addEventListener(one, (evt) => handler(evt), useCapture);
-    };
-    events.forEach(addEvent);
-  };
-
-  // event handlers for movement
+export function addEventsToMenu(props) {
+  let { tapUp, tapDown, tracking, menuApi, setMenuVisible, smallMode } = props;
+  // event handlers for menu movement
   const onMove = (evt) => {
     if (tapDown !== false) {
       let X;
       if (evt.type == "mousemove") X = evt.clientX;
       else if (evt.type == "touchmove") X = evt.touches[0].clientX;
       let distance = X - tapDown;
-      if (tracking) handleMenuDrag(distance, menuApi);
+      if (tracking) handleMenuDrag(distance, menuApi, smallMode);
     }
   };
-
   const onDown = (evt) => {
     let X;
     if (evt.type == "mousedown") X = evt.clientX;
@@ -38,7 +25,6 @@ export function addEventsToMenu(
     }
     closeMenuOnClick(evt.target, setMenuVisible, menuApi);
   };
-
   const onUp = (evt) => {
     let X;
     if (evt.type == "mouseup") X = evt.clientX;
@@ -50,18 +36,17 @@ export function addEventsToMenu(
       setMenuVisible(true);
     }
     if (distance > 0 && distance < 150 && tracking) {
-      releaseMenu(menuApi);
+      releaseMenu(menuApi, smallMode);
       setMenuVisible(false);
     }
     if (distance < -100) {
-      releaseMenu(menuApi);
+      releaseMenu(menuApi, smallMode);
       setMenuVisible(false);
     }
     tapDown = false;
     tapUp = false;
     tracking = false;
   };
-
   // add move listeners
   addMultipleListeners(window, ["touchmove", "mousemove"], onMove, true);
   // add down listeners
