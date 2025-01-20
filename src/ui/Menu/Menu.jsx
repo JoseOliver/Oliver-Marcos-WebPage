@@ -51,7 +51,12 @@ const Menu = React.forwardRef((props, menuRef) => {
           <p className="menu-elem">Acerca de</p>
         </Link>
       </div>
-      <ToggleSwitch label="Modo oscuro" setValue={setDarkMode} />
+      <ToggleSwitch
+        label="Modo oscuro"
+        myValue={darkMode}
+        storageName="darkMode"
+        setValue={setDarkMode}
+      />
     </animated.div>
   );
 });

@@ -4,8 +4,10 @@ import { Switch } from "@mui/material";
 
 export const ToggleSwitch = (props) => {
   let label = props.label;
+  let myValue = props.myValue || false;
   let additionalClasses = props.className;
   let setValue = props.setValue || false;
+  let storageName = props.storageName || false;
   return (
     <div className={"menuItem flex items-center " + additionalClasses}>
       <span className="menuItem">{label}&emsp;</span>
@@ -13,9 +15,13 @@ export const ToggleSwitch = (props) => {
         <input
           className="menuItem"
           type="checkbox"
-          onChange={(e) => {
+          checked={myValue}
+          onChange={() => {
             if (setValue) {
-              setValue(e.target.checked);
+              setValue(!myValue);
+            }
+            if (storageName) {
+              localStorage.setItem(storageName, !myValue);
             }
           }}
         />

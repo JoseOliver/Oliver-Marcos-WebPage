@@ -16,6 +16,7 @@ export const Title = styled.h1`
   font-optical-sizing: auto;
   font-weight: bold;
   font-style: normal;
+  text-align: center;
 `;
 
 function App() {
@@ -27,13 +28,15 @@ function App() {
   const smallSize = 600;
   const smallMenuSize = 200;
   const menuSize = 300;
+  const startDarkModeValue =
+    localStorage.getItem("darkMode") == "true" ? true : false || false;
   // hooks
-  const [darkMode, setDarkMode] = useState(false); // dark mode bool
+  const [darkMode, setDarkMode] = useState(startDarkModeValue); // dark mode bool
   const [smallMode, setSmallMode] = useState(
     // small mode bool
     evaluateScreenWidthOver(smallSize)
   );
-  const [menuVisible, setMenuVisible] = useState(false); // menu visibility bool
+  const [menuVisible, setMenuVisible] = useState(startDarkModeValue); // menu visibility bool
   // arbitrary init executions
   const navigate = useNavigate();
   window.history.pushState("", "", window.location.href); // disable navigation in this site
@@ -124,6 +127,7 @@ function App() {
         menuSprings={menuSprings}
         menuApi={menuApi}
         menuVisible={menuVisible}
+        darkMode={darkMode}
         setMenuVisible={setMenuVisible}
         setDarkMode={setDarkMode}
         smallMode={smallMode}
