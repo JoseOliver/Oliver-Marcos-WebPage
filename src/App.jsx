@@ -39,7 +39,7 @@ function App() {
   const [menuVisible, setMenuVisible] = useState(startDarkModeValue); // menu visibility bool
   // arbitrary init executions
   const navigate = useNavigate();
-  window.history.pushState("", "", window.location.href); // disable navigation in this site
+  window.history.pushState("", "", "/"); // disable navigation in this site
   const [menuSprings, menuApi] = useSpring(() => ({
     // menu animator init
     from: { x: !smallMode ? -menuSize : -smallMenuSize },

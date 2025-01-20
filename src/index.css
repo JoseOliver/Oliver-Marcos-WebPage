@@ -43,7 +43,9 @@ h2 {
 }
 .dark .border {
   border: solid #e2e8f0;
-  border-width: 10px !important;
+}
+.small .border {
+  border-width: 7px !important;
 }
 .dark .fine-border {
   border: solid #e2e8f0;
