@@ -9,4 +9,11 @@
 }
 .menu-elem {
   text-align: center;
+  padding: 5px;
+}
+.title {
+  font-size: 1.5em !important;
+}
+.dark .title {
+  text-decoration-color: rgb(165 180 252);
 }

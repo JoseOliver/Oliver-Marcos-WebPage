@@ -1,21 +1,28 @@
 // import logo from "./logo.svg";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./App-TailWind.css";
+import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
 import Menu from "./ui/Menu/Menu";
-import Index from "./ui/Index/Index";
 import MenuIcon from "@mui/icons-material/Menu";
+import LogIcon from "@mui/icons-material/Person";
 import { releaseMenu, showMenu } from "./lib/animations";
 import { useSpring } from "@react-spring/web";
 import { evaluateScreenWidthOver, propagateClass } from "./lib/globals";
+
+export const Title = styled.h1`
+  font-family: "Playwrite VN", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+`;
 
 function App() {
   // elements refs
   const bodyRef = useRef(null);
   const menuRef = useRef(null);
   const headerRef = useRef(null);
-  const outletRef = useRef(null);
   // variables
   const smallSize = 600;
   const smallMenuSize = 200;
@@ -28,6 +35,7 @@ function App() {
   );
   const [menuVisible, setMenuVisible] = useState(false); // menu visibility bool
   // arbitrary init executions
+  const navigate = useNavigate();
   window.history.pushState("", "", window.location.href); // disable navigation in this site
   const [menuSprings, menuApi] = useSpring(() => ({
     // menu animator init
@@ -75,23 +83,41 @@ function App() {
           width="150"
           alt=""
           className="rounded m-1 fine-border small:w-12"
+          onClick={() => navigate("/")}
         />
-        <h1>Oliver Marcos</h1>
-        <button
-          id="menuOpenerButton"
-          className="rounded w-20 h-20 flex justify-center items-center"
-          onClick={() => {
-            if (!menuVisible) {
-              showMenu(menuApi);
-              setMenuVisible(true);
-            } else {
-              releaseMenu(menuApi, smallMode);
-              setMenuVisible(false);
-            }
-          }}
-        >
-          <MenuIcon id="menuOpener" />
-        </button>
+        <Title onClick={() => navigate("/")}>Oliver Marcos</Title>
+        <div id="headerBotonera" className="flex">
+          <button
+            id="menuOpenerButton"
+            className="rounded w-12 h-20 flex justify-center items-center"
+            onClick={() => {
+              if (!menuVisible) {
+                showMenu(menuApi);
+                setMenuVisible(true);
+              } else {
+                releaseMenu(menuApi, smallMode);
+                setMenuVisible(false);
+              }
+            }}
+          >
+            <MenuIcon id="menuOpener" />
+          </button>
+          <button
+            id="logOpenerButton"
+            className="rounded w-12 h-20 flex justify-center items-center"
+            onClick={() => {
+              // if (!menuVisible) {
+              //   showMenu(menuApi);
+              //   setMenuVisible(true);
+              // } else {
+              //   releaseMenu(menuApi, smallMode);
+              //   setMenuVisible(false);
+              // }
+            }}
+          >
+            <LogIcon id="logOpener" />
+          </button>
+        </div>
       </header>
       <Menu
         ref={menuRef}
@@ -103,7 +129,7 @@ function App() {
         smallMode={smallMode}
       />
 
-      <Outlet ref={outletRef} />
+      <Outlet />
     </div>
   );
 }

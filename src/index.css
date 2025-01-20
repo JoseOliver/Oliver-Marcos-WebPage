@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&display=swap");
+
 body {
   margin: 0;
   user-select: none;
@@ -20,17 +22,14 @@ img.small {
 
 h1 {
   font-size: 3em !important;
-  font-family: "Brush Script MT";
-  font-variant: small-caps;
-  font-weight: bold !important;
   padding: 10px;
 }
 h1.small {
-  font-size: 2em !important;
+  font-size: 1em !important;
   text-align: center;
 }
 h2 {
-  font-size: 1.5em !important;
+  font-size: 2em !important;
   font-family: "Brush Script MT";
   text-decoration: underline;
   font-weight: bold !important;
@@ -55,6 +54,10 @@ h2 {
   visibility: hidden;
 }
 #menuOpenerButton.small {
+  width: 50px;
+  height: 50px;
+}
+#logOpenerButton.small {
   width: 50px;
   height: 50px;
 }

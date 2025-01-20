@@ -578,8 +578,8 @@ video {
   height: 5rem;
 }
 
-.w-20 {
-  width: 5rem;
+.w-12 {
+  width: 3rem;
 }
 
 .resize {
@@ -618,6 +618,10 @@ video {
 .text-indigo-700 {
   --tw-text-opacity: 1;
   color: rgb(67 56 202 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .dark\:bg-black:where(.dark, .dark *) {

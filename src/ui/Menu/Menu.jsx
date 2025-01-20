@@ -5,6 +5,7 @@ import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import { handleMenuDrag, releaseMenu, showMenu } from "../../lib/animations";
 import { addEventsToMenu } from "./MenuEvents";
 import "./menu.css";
+import { Title } from "../../App";
 
 const Menu = React.forwardRef((props, menuRef) => {
   // menu props
@@ -39,7 +40,7 @@ const Menu = React.forwardRef((props, menuRef) => {
       style={menuSprings}
     >
       <div className="menuItem">
-        <h2>&nbsp;Lista del menu&nbsp;</h2>
+        <Title className="title underline">&nbsp;Lista del menu&nbsp;</Title>
         <Link to="/">
           <p className="menu-elem">Home</p>
         </Link>
