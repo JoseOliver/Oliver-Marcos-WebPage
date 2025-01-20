@@ -11,23 +11,37 @@ import { useSpring } from "@react-spring/web";
 import { evaluateScreenWidthOver, propagateClass } from "./lib/globals";
 
 function App() {
-  // arbitrary executions
-  window.history.pushState("", "", "/"); // disable navigation in this site
   // elements refs
   const bodyRef = useRef(null);
   const menuRef = useRef(null);
+  const headerRef = useRef(null);
+  const outletRef = useRef(null);
   // variables
   const smallSize = 600;
   const smallMenuSize = 200;
   const menuSize = 300;
   // hooks
   const [darkMode, setDarkMode] = useState(false); // dark mode bool
-  const [smallMode, setSmallMode] = useState(evaluateScreenWidthOver(600)); // small mode bool
+  const [smallMode, setSmallMode] = useState(
+    // small mode bool
+    evaluateScreenWidthOver(smallSize)
+  );
   const [menuVisible, setMenuVisible] = useState(false); // menu visibility bool
-  // menu animator
+  // arbitrary init executions
+  window.history.pushState("", "", window.location.href); // disable navigation in this site
   const [menuSprings, menuApi] = useSpring(() => ({
+    // menu animator init
     from: { x: !smallMode ? -menuSize : -smallMenuSize },
   }));
+  // listener helpers
+  window.addEventListener(
+    // resize event for smallMode activation
+    "resize",
+    (evt) => {
+      setSmallMode(evaluateScreenWidthOver(smallSize));
+    },
+    true
+  );
   // effects
   useEffect(() => {
     // dark mode enabler
@@ -46,22 +60,16 @@ function App() {
       propagateClass(body, "small", false);
     }
   }, [smallMode]);
-  // listener helpers
-  window.addEventListener(
-    // resize event for smallMode activation
-    "resize",
-    (evt) => {
-      setSmallMode(evaluateScreenWidthOver(smallSize));
-    },
-    true
-  );
   // App element definition
   return (
     <div // body
       ref={bodyRef}
       className="dark:text-indigo-300 dark:bg-slate-800 big block"
     >
-      <header className="border flex justify-between items-center bg-slate-200 dark:bg-black">
+      <header
+        className="border flex justify-between items-center bg-slate-200 dark:bg-black"
+        ref={headerRef}
+      >
         <img
           src="./src/assets/brand_logo.png"
           width="150"
@@ -95,7 +103,7 @@ function App() {
         smallMode={smallMode}
       />
 
-      <Outlet />
+      <Outlet ref={outletRef} />
     </div>
   );
 }

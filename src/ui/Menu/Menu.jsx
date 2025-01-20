@@ -21,6 +21,7 @@ const Menu = React.forwardRef((props, menuRef) => {
   let tapDown = false,
     tapUp = false;
   let tracking = false;
+  let menuSize;
   // menu external funcs execute
   addEventsToMenu({
     tapUp,

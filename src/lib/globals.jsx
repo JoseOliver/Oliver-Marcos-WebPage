@@ -26,7 +26,7 @@ export function renderMenuVisible(isMenuVisible) {
   if (!isMenuVisible) return "hidden ";
   else return "";
 }
-// close the menu if you click anywhere else the menu itself
+// Close the menu if you click anywhere else the menu itself
 export function closeMenuOnClick(target, setMenuVisible, menuApi) {
   // miro si se ha pulsado desde fuera del menu para cerrarlo...
   let pointedElement = target;
@@ -49,7 +49,7 @@ export function closeMenuOnClick(target, setMenuVisible, menuApi) {
     setMenuVisible(false);
   }
 }
-// func to add a handler to multiple listeners
+// Add a handler to multiple listeners
 export function addMultipleListeners(element, events, handler, useCapture) {
   const addEvent = (one) => {
     element.addEventListener(one, (evt) => handler(evt), useCapture);
