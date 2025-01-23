@@ -1,22 +1,21 @@
-.menu {
+.logMenu {
   height: -webkit-fill-available;
   width: 300px;
-  border-radius: 0 25px 25px 0;
+  border-radius: 25px 0 0 25px;
   padding: 10px;
+  background-color: #fff8dc;
 }
-.menu-item {
-  display: flex;
-  flex-direction: column;
-}
-.menu.small {
+.small .logMenu {
   width: 200px;
 }
-.menu-elem {
+.dark .logMenu {
+  background-color: #8a795d;
+}
+.logMenu-elem {
   text-align: center;
   padding: 5px;
-  /* border: 1px solid black; */
 }
-.menu-title {
+.title-log-menu {
   font-size: 1.5em !important;
 }
 .dark .title {

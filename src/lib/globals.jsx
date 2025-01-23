@@ -1,6 +1,6 @@
 import { releaseMenu } from "./animations";
+import { releaseLogMenu } from "./animations";
 
-export function Variables() {}
 // toggle any boolean
 export function toggle(state) {
   return !state;
@@ -17,16 +17,10 @@ export function propagateClass(myElement, myClass, toDo) {
 }
 // Evaluates if the screen width is upper a size or not
 export function evaluateScreenWidthOver(size) {
-  let screenSize = window.innerWidth;
+  let screenSize = window.visualViewport.width;
   if (size <= screenSize) return false;
   else return true;
 }
-// Render the menu visibility boolean to a "hidden" string for the css prop
-export function renderMenuVisible(isMenuVisible) {
-  if (!isMenuVisible) return "hidden ";
-  else return "";
-}
-// Close the menu if you click anywhere else the menu itself
 export function closeMenuOnClick(target, setMenuVisible, menuApi) {
   // miro si se ha pulsado desde fuera del menu para cerrarlo...
   let pointedElement = target;
@@ -47,6 +41,28 @@ export function closeMenuOnClick(target, setMenuVisible, menuApi) {
     // cierra el menu si el elemento pulsado no es o no tiene como ancestro a menu
     releaseMenu(menuApi);
     setMenuVisible(false);
+  }
+}
+export function closeLogMenuOnClick(target, setLogMenuVisible, logMenuApi) {
+  // miro si se ha pulsado desde fuera del menu para cerrarlo...
+  let pointedElement = target;
+  let isFather = false; // premisa no es menu
+  if (pointedElement.classList.contains("logMenu")) {
+    isFather = true; // si es menu
+  }
+  while (pointedElement.parentNode && pointedElement.tagName != "BODY") {
+    if (pointedElement.id == "logMenuOpenerButton") return;
+    if (pointedElement.classList.contains("logMenu")) {
+      isFather = true; // si es menu
+      break;
+    } else {
+      pointedElement = pointedElement.parentNode;
+    }
+  }
+  if (!isFather) {
+    // cierra el menu si el elemento pulsado no es o no tiene como ancestro a menu
+    releaseLogMenu(logMenuApi);
+    setLogMenuVisible(false);
   }
 }
 // Add a handler to multiple listeners

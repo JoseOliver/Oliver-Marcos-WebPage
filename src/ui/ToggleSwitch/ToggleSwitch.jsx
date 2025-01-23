@@ -8,8 +8,20 @@ export const ToggleSwitch = (props) => {
   let additionalClasses = props.className;
   let setValue = props.setValue || false;
   let storageName = props.storageName || false;
+  const changeFunc = () => {
+    if (setValue) {
+      setValue(!myValue);
+    }
+    if (storageName) {
+      localStorage.setItem(storageName, !myValue);
+    }
+  };
   return (
-    <div className={"menuItem flex items-center " + additionalClasses}>
+    <div
+      className={"menuItem flex items-center " + additionalClasses}
+      onTouchStart={() => changeFunc()}
+      onMouseDown={() => changeFunc()}
+    >
       <span className="menuItem">{label}&emsp;</span>
       <label className="text-indigo-700 switch">
         <input
@@ -17,12 +29,7 @@ export const ToggleSwitch = (props) => {
           type="checkbox"
           checked={myValue}
           onChange={() => {
-            if (setValue) {
-              setValue(!myValue);
-            }
-            if (storageName) {
-              localStorage.setItem(storageName, !myValue);
-            }
+            /* provide onchange void func to avoid warning */
           }}
         />
         <span className="menuItem slider round"></span>

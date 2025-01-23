@@ -1,37 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&display=swap");
-
+html {
+  touch-action: pan-y;
+}
 body {
   margin: 0;
   user-select: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
-
+.body {
+  height: 100vh;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.big {
-  min-height: 100vh;
-}
-
 img.small {
   width: 50px;
 }
-
-h1 {
+.title {
+  font-family: "Playwrite VN", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
   font-size: 3em !important;
   padding: 10px;
 }
-h1.small {
+.small .title {
   font-size: 1em !important;
-}
-h2 {
-  font-size: 2em !important;
-  font-family: "Brush Script MT";
-  text-decoration: underline;
-  font-weight: bold !important;
 }
 .border {
   border: solid black;
@@ -58,7 +56,7 @@ h2 {
   width: 30px;
   height: 50px;
 }
-#logOpenerButton.small {
+#logMenuOpenerButton.small {
   width: 30px;
   height: 50px;
 }

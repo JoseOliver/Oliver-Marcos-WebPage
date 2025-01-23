@@ -1,18 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { animated } from "@react-spring/web";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
-import { handleMenuDrag, releaseMenu, showMenu } from "../../lib/animations";
 import { addEventsToMenu } from "./MenuEvents";
 import "./menu.css";
-import { Title } from "../../App";
 
 const Menu = React.forwardRef((props, menuRef) => {
   // menu props
   let {
     menuSprings,
     menuApi,
-    menuVisible,
     setMenuVisible,
     darkMode,
     setDarkMode,
@@ -22,7 +19,7 @@ const Menu = React.forwardRef((props, menuRef) => {
   let tapDown = false,
     tapUp = false;
   let tracking = false;
-  let menuSize;
+  const navigate = useNavigate();
   // menu external funcs execute
   addEventsToMenu({
     tapUp,
@@ -39,16 +36,36 @@ const Menu = React.forwardRef((props, menuRef) => {
       className="menu absolute dark:bg-slate-600 bg-slate-200 flex justify-between flex-col items-center"
       style={menuSprings}
     >
-      <div className="menuItem">
-        <Title className="title underline">&nbsp;Lista del menu&nbsp;</Title>
-        <Link to="/">
-          <p className="menu-elem">Home</p>
+      <div className="menu-item">
+        <div className="title menu-title underline">
+          &nbsp;Lista del menu&nbsp;
+        </div>
+        <Link
+          className="menu-elem"
+          to="/"
+          onTouchStart={() => {
+            navigate("/");
+          }}
+        >
+          Home
         </Link>
-        <Link to="/products">
-          <p className="menu-elem">Productos</p>
+        <Link
+          className="menu-elem"
+          to="/products"
+          onTouchStart={() => {
+            navigate("/products");
+          }}
+        >
+          Productos
         </Link>
-        <Link to="/about">
-          <p className="menu-elem">Acerca de</p>
+        <Link
+          className="menu-elem"
+          to="/about"
+          onTouchStart={() => {
+            navigate("/about");
+          }}
+        >
+          Acerca de
         </Link>
       </div>
       <ToggleSwitch
