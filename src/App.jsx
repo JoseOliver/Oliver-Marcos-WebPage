@@ -56,7 +56,7 @@ export function App() {
   window.history.pushState("", "", "/"); // disable navigation in this site
   const [menuSprings, menuApi] = useSpring(() => ({
     // menu animator init
-    from: { x: !smallMode ? -menuSize : -smallMenuSize },
+    from: { x: !smallMode ? -menuSize : -smallMenuSize, opacity: 0 },
   }));
   const [logMenuSprings, logMenuApi] = useSpring(() => ({
     // menu animator init

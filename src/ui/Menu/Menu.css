@@ -3,12 +3,13 @@
   width: 300px;
   border-radius: 0 25px 25px 0;
   padding: 10px;
+  position: fixed;
 }
 .menu-item {
   display: flex;
   flex-direction: column;
 }
-.menu.small {
+.small .menu {
   width: 200px;
 }
 .menu-elem {
