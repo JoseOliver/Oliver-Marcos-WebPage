@@ -23,11 +23,11 @@ const LogMenu = React.forwardRef((props, logMenuRef) => {
     <animated.div
       id="logMenu"
       ref={logMenuRef}
-      className="logMenu absolute flex justify-between flex-col items-center"
+      className="logMenu absolute flex justify-between flex-col items-center w-48 sm:w-80"
       style={logMenuSprings}
     >
       <div className="menuItem">
-        <div className="title title-log-menu underline">
+        <div className="title title-log-menu underline text-lg sm:text-xl">
           &nbsp;Log menu&nbsp;
         </div>
       </div>

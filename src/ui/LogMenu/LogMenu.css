@@ -1,24 +1,17 @@
 .logMenu {
   height: -webkit-fill-available;
-  width: 300px;
   border-radius: 25px 0 0 25px;
   padding: 10px;
   background-color: #fff8dc;
   /* display: none; */
   position: fixed;
 }
-.small .logMenu {
-  width: 200px;
-}
 .dark .logMenu {
-  background-color: #8a795d;
+  background-color: #59392b;
 }
 .logMenu-elem {
   text-align: center;
   padding: 5px;
-}
-.title-log-menu {
-  font-size: 1.5em !important;
 }
 .dark .title {
   text-decoration-color: rgb(165 180 252);

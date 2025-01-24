@@ -18,36 +18,37 @@ export function addEventsToMenu(props) {
     let X;
     if (evt.type == "mousedown") X = evt.clientX;
     else if (evt.type == "touchstart") X = evt.touches[0].clientX;
-    tapDown = X;
     if (X < 50) {
-      //antes PageX
+      tapDown = X;
       tracking = true;
     }
     closeMenuOnClick(evt.target, setMenuVisible, menuApi);
   };
   const onUp = (evt) => {
-    let X;
-    let openLimit = 150,
-      smallOpenLimit = 80;
-    if (evt.type == "mouseup") X = evt.clientX;
-    else if (evt.type == "touchend") X = evt.changedTouches[0].clientX;
-    tapUp = X;
-    let distance = tapUp - tapDown;
-    if (tracking && distance >= (!smallMode ? openLimit : smallOpenLimit)) {
-      showMenu(menuApi);
-      setMenuVisible(true);
-    }
-    if (
-      distance > 0 &&
-      distance < (!smallMode ? openLimit : smallOpenLimit) &&
-      tracking
-    ) {
-      releaseMenu(menuApi, smallMode);
-      setMenuVisible(false);
-    }
-    if (distance < -100) {
-      releaseMenu(menuApi, smallMode);
-      setMenuVisible(false);
+    if (tracking) {
+      let X;
+      let openLimit = 150,
+        smallOpenLimit = 80;
+      if (evt.type == "mouseup") X = evt.clientX;
+      else if (evt.type == "touchend") X = evt.changedTouches[0].clientX;
+      tapUp = X;
+      let distance = tapUp - tapDown;
+      if (distance >= (!smallMode ? openLimit : smallOpenLimit)) {
+        showMenu(menuApi);
+        setMenuVisible(true);
+      }
+      if (
+        distance > 0 &&
+        tracking &&
+        distance < (!smallMode ? openLimit : smallOpenLimit)
+      ) {
+        releaseMenu(menuApi, smallMode);
+        setMenuVisible(false);
+      }
+      if (distance < -100) {
+        releaseMenu(menuApi, smallMode);
+        setMenuVisible(false);
+      }
     }
     tapDown = false;
     tapUp = false;

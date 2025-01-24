@@ -13,6 +13,11 @@ import { releaseLogMenu, showLogMenu } from "./lib/animations";
 import { useSpring } from "@react-spring/web";
 import { evaluateScreenWidthOver, propagateClass } from "./lib/globals";
 
+// consts
+export const smallSize = 640;
+export const smallMenuSize = 172;
+export const menuSize = 320;
+
 export function App() {
   // elements refs
   const bodyRef = useRef(null);
@@ -20,9 +25,6 @@ export function App() {
   const logMenuRef = useRef(null);
   const headerRef = useRef(null);
   // variables
-  const smallSize = 600;
-  const smallMenuSize = 200;
-  const menuSize = 300;
   const startDarkModeValue =
     localStorage.getItem("darkMode") == "true" ? true : false || false;
   const openMenuFunc = () => {
@@ -101,30 +103,32 @@ export function App() {
       className="body dark:text-indigo-300 dark:bg-slate-800 big block"
     >
       <header
-        className="border flex justify-between items-center bg-slate-200 dark:bg-black"
+        className="border sm:border flex justify-between items-center bg-slate-200 dark:bg-black"
         ref={headerRef}
       >
         <img
           src="./src/assets/brand_logo.png"
-          width="150"
           alt=""
-          className="rounded m-1 fine-border small:w-12"
+          className="rounded m-1 fine-border w-12 sm:w-40"
           onClick={() => navigate("/")}
         />
-        <div className="title" onClick={() => navigate("/")}>
+        <div
+          className="title text-xl sm:text-4xl"
+          onClick={() => navigate("/")}
+        >
           Oliver Marcos
         </div>
         <div id="headerBotonera" className="flex">
           <button
             id="menuOpenerButton"
-            className="rounded w-12 h-20 flex justify-center items-center"
+            className="rounded sm:w-12 sm:h-20 w-8 h-12 flex justify-center items-center"
             onClick={() => openMenuFunc()}
           >
             <MenuIcon id="menuOpener" />
           </button>
           <button
             id="logMenuOpenerButton"
-            className="rounded w-12 h-20 flex justify-center items-center"
+            className="rounded sm:w-12 sm:h-20 w-8 h-12 flex justify-center items-center"
             onClick={() => openLogMenuFunc()}
           >
             <LogIcon id="logMenuOpener" />

@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import Index from "./ui/Index/Index";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,7 +28,5 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  <RouterProvider router={router} />
 );

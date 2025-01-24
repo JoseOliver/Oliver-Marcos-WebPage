@@ -1,6 +1,5 @@
 .menu {
   height: -webkit-fill-available;
-  width: 300px;
   border-radius: 0 25px 25px 0;
   padding: 10px;
   position: fixed;
@@ -9,16 +8,9 @@
   display: flex;
   flex-direction: column;
 }
-.small .menu {
-  width: 200px;
-}
 .menu-elem {
   text-align: center;
   padding: 5px;
-  /* border: 1px solid black; */
-}
-.menu-title {
-  font-size: 1.5em !important;
 }
 .dark .title {
   text-decoration-color: rgb(165 180 252);

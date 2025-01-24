@@ -16,20 +16,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-img.small {
-  width: 50px;
-}
 .title {
   font-family: "Playwrite VN", serif;
   font-optical-sizing: auto;
   font-weight: bold;
   font-style: normal;
   text-align: center;
-  font-size: 3em !important;
   padding: 10px;
-}
-.small .title {
-  font-size: 1em !important;
 }
 .border {
   border: solid black;
@@ -51,12 +44,4 @@ img.small {
 }
 .invisible {
   visibility: hidden;
-}
-#menuOpenerButton.small {
-  width: 30px;
-  height: 50px;
-}
-#logMenuOpenerButton.small {
-  width: 30px;
-  height: 50px;
 }

@@ -33,11 +33,11 @@ const Menu = React.forwardRef((props, menuRef) => {
     <animated.div
       id="menu"
       ref={menuRef}
-      className="menu absolute dark:bg-slate-600 bg-slate-200 flex justify-between flex-col items-center"
+      className="menu absolute dark:bg-slate-600 bg-slate-200 flex justify-between flex-col items-center w-48 sm:w-80"
       style={menuSprings}
     >
       <div className="menu-item">
-        <div className="title menu-title underline">
+        <div className="title menu-title underline text-lg sm:text-xl">
           &nbsp;Lista del menu&nbsp;
         </div>
         <Link

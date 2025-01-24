@@ -1,11 +1,10 @@
-let size = 300,
-  smallSize = 200;
+import { smallSize, menuSize, smallMenuSize } from "../App";
 
 export function handleMenuDrag(distance, api, smallMode) {
-  if (distance < (!smallMode ? size : smallSize)) {
+  if (distance < (!smallMode ? menuSize : smallMenuSize)) {
     api.start({
       to: {
-        x: (!smallMode ? -size : -smallSize) + distance,
+        x: (!smallMode ? -menuSize : -smallMenuSize) + distance,
         opacity: 1,
       },
     });
@@ -29,13 +28,13 @@ export function showMenu(api) {
 export function releaseMenu(api, smallMode) {
   api.start({
     to: {
-      x: !smallMode ? -size : -smallSize,
+      x: !smallMode ? -menuSize : -smallMenuSize,
       opacity: 0,
     },
   });
 }
 export function handleLogMenuDrag(distance, api, smallMode) {
-  if (distance < (!smallMode ? size : smallSize)) {
+  if (distance < (!smallMode ? menuSize : smallMenuSize)) {
     api.start({
       to: {
         x: window.visualViewport.width - distance,
@@ -45,7 +44,8 @@ export function handleLogMenuDrag(distance, api, smallMode) {
   } else {
     api.start({
       to: {
-        x: window.visualViewport.width - (!smallMode ? size : smallSize),
+        x:
+          window.visualViewport.width - (!smallMode ? menuSize : smallMenuSize),
         opacity: 1,
       },
     });
@@ -55,8 +55,8 @@ export function showLogMenu(api, smallMode) {
   api.start({
     to: {
       x: !smallMode
-        ? window.visualViewport.width - size
-        : window.visualViewport.width - smallSize,
+        ? window.visualViewport.width - menuSize
+        : window.visualViewport.width - smallMenuSize,
       opacity: 1,
     },
   });
