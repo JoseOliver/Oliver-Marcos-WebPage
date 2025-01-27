@@ -2,7 +2,6 @@
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./App-TailWind.css";
-import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
 import Menu from "./ui/Menu/Menu";
 import LogMenu from "./ui/LogMenu/LogMenu";
@@ -15,8 +14,8 @@ import { evaluateScreenWidthOver, propagateClass } from "./lib/globals";
 
 // consts
 export const smallSize = 640;
-export const smallMenuSize = 172;
-export const menuSize = 320;
+export const smallMenuSize = 192;
+export const menuSize = 340;
 
 export function App() {
   // elements refs
@@ -100,16 +99,16 @@ export function App() {
   return (
     <div // body
       ref={bodyRef}
-      className="body dark:text-indigo-300 dark:bg-slate-800 big block"
+      className="body dark:text-indigo-300 dark:bg-slate-800 block"
     >
       <header
-        className="border sm:border flex justify-between items-center bg-slate-200 dark:bg-black"
+        className="border flex justify-between items-center bg-slate-200 dark:bg-black sticky top-0"
         ref={headerRef}
       >
         <img
           src="./src/assets/brand_logo.png"
           alt=""
-          className="rounded m-1 fine-border w-12 sm:w-40"
+          className="rounded m-1 fine-border size-9 sm:size-24"
           onClick={() => navigate("/")}
         />
         <div

@@ -43,8 +43,10 @@ const Menu = React.forwardRef((props, menuRef) => {
         <Link
           className="menu-elem"
           to="/"
-          onTouchStart={() => {
-            navigate("/");
+          onPointerDown={() => {
+            if (!tracking) {
+              navigate("/");
+            }
           }}
         >
           Home
@@ -52,7 +54,7 @@ const Menu = React.forwardRef((props, menuRef) => {
         <Link
           className="menu-elem"
           to="/products"
-          onTouchStart={() => {
+          onPointerDown={() => {
             navigate("/products");
           }}
         >
@@ -61,7 +63,7 @@ const Menu = React.forwardRef((props, menuRef) => {
         <Link
           className="menu-elem"
           to="/about"
-          onTouchStart={() => {
+          onPointerDown={() => {
             navigate("/about");
           }}
         >

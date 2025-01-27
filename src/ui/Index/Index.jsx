@@ -1,8 +1,8 @@
 import React from "react";
-// import "./index.css";
+import "./index.css";
 
 const Index = () => {
-  return <div height={window.visualViewport.height}>Index</div>;
+  return <div style={{ height: "1000px" }}>Index</div>;
 };
 
 export default Index;

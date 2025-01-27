@@ -1,4 +1,4 @@
-import { smallSize, menuSize, smallMenuSize } from "../App";
+import { menuSize, smallMenuSize } from "../App";
 
 export function handleMenuDrag(distance, api, smallMode) {
   if (distance < (!smallMode ? menuSize : smallMenuSize)) {

@@ -4,7 +4,6 @@ import {
   releaseLogMenu,
 } from "../../lib/animations";
 import { closeLogMenuOnClick } from "../../lib/globals";
-import { addMultipleListeners } from "../../lib/globals";
 
 export function addEventsToLogMenu(props) {
   let { tapUp, tapDown, tracking, logMenuApi, setLogMenuVisible, smallMode } =

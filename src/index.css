@@ -1,16 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&display=swap");
 html {
   touch-action: pan-y;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 body {
   margin: 0;
   user-select: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
-.body {
-  height: 100vh;
+html::-webkit-scrollbar {
+  display: none; /* Chrome, safari & opera */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

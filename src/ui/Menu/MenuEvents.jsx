@@ -6,31 +6,25 @@ export function addEventsToMenu(props) {
   let { tapUp, tapDown, tracking, menuApi, setMenuVisible, smallMode } = props;
   // event handlers for menu movement
   const onMove = (evt) => {
-    if (tapDown !== false) {
-      let X;
-      if (evt.type == "mousemove") X = evt.clientX;
-      else if (evt.type == "touchmove") X = evt.touches[0].clientX;
+    if (tracking) {
+      let X = evt.layerX;
       let distance = X - tapDown;
-      if (tracking) handleMenuDrag(distance, menuApi, smallMode);
+      handleMenuDrag(distance, menuApi, smallMode);
     }
   };
   const onDown = (evt) => {
-    let X;
-    if (evt.type == "mousedown") X = evt.clientX;
-    else if (evt.type == "touchstart") X = evt.touches[0].clientX;
+    let X = evt.layerX;
     if (X < 50) {
       tapDown = X;
       tracking = true;
     }
-    closeMenuOnClick(evt.target, setMenuVisible, menuApi);
+    closeMenuOnClick(evt.target, setMenuVisible, menuApi, smallMode);
   };
   const onUp = (evt) => {
     if (tracking) {
-      let X;
+      let X = evt.layerX;
       let openLimit = 150,
         smallOpenLimit = 80;
-      if (evt.type == "mouseup") X = evt.clientX;
-      else if (evt.type == "touchend") X = evt.changedTouches[0].clientX;
       tapUp = X;
       let distance = tapUp - tapDown;
       if (distance >= (!smallMode ? openLimit : smallOpenLimit)) {
@@ -39,7 +33,6 @@ export function addEventsToMenu(props) {
       }
       if (
         distance > 0 &&
-        tracking &&
         distance < (!smallMode ? openLimit : smallOpenLimit)
       ) {
         releaseMenu(menuApi, smallMode);
@@ -55,9 +48,9 @@ export function addEventsToMenu(props) {
     tracking = false;
   };
   // add move listeners
-  addMultipleListeners(window, ["touchmove", "mousemove"], onMove, true);
+  window.addEventListener("pointermove", onMove, true);
   // add down listeners
-  addMultipleListeners(window, ["touchstart", "mousedown"], onDown, true);
+  window.addEventListener("pointerdown", onDown, true);
   // add up listeners
-  addMultipleListeners(window, ["touchend", "mouseup"], onUp, true);
+  window.addEventListener("pointerup", onUp, true);
 }

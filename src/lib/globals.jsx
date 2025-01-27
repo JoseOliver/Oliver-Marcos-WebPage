@@ -21,7 +21,7 @@ export function evaluateScreenWidthOver(size) {
   if (size <= screenSize) return false;
   else return true;
 }
-export function closeMenuOnClick(target, setMenuVisible, menuApi) {
+export function closeMenuOnClick(target, setMenuVisible, menuApi, smallMode) {
   // miro si se ha pulsado desde fuera del menu para cerrarlo...
   let pointedElement = target;
   let isFather = false; // premisa no es menu
@@ -39,11 +39,16 @@ export function closeMenuOnClick(target, setMenuVisible, menuApi) {
   }
   if (!isFather) {
     // cierra el menu si el elemento pulsado no es o no tiene como ancestro a menu
-    releaseMenu(menuApi);
+    releaseMenu(menuApi, smallMode);
     setMenuVisible(false);
   }
 }
-export function closeLogMenuOnClick(target, setLogMenuVisible, logMenuApi) {
+export function closeLogMenuOnClick(
+  target,
+  setLogMenuVisible,
+  logMenuApi,
+  smallMode
+) {
   // miro si se ha pulsado desde fuera del menu para cerrarlo...
   let pointedElement = target;
   let isFather = false; // premisa no es menu
