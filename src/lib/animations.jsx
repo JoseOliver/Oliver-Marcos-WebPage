@@ -45,7 +45,8 @@ export function handleLogMenuDrag(distance, api, smallMode) {
     api.start({
       to: {
         x:
-          window.visualViewport.width - (!smallMode ? menuSize : smallMenuSize),
+          window.visualViewport.width +
+          (!smallMode ? -menuSize : -smallMenuSize),
         opacity: 1,
       },
     });
@@ -54,9 +55,8 @@ export function handleLogMenuDrag(distance, api, smallMode) {
 export function showLogMenu(api, smallMode) {
   api.start({
     to: {
-      x: !smallMode
-        ? window.visualViewport.width - menuSize
-        : window.visualViewport.width - smallMenuSize,
+      x:
+        window.visualViewport.width + (!smallMode ? -menuSize : -smallMenuSize),
       opacity: 1,
     },
   });

@@ -15,7 +15,7 @@ import { evaluateScreenWidthOver, propagateClass } from "./lib/globals";
 // consts
 export const smallSize = 640;
 export const smallMenuSize = 192;
-export const menuSize = 340;
+export const menuSize = 320;
 
 export function App() {
   // elements refs
